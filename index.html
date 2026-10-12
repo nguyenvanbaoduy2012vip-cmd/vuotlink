@@ -13,15 +13,16 @@ header{min-height:70px;background:#fff;border-bottom:1px solid var(--line);displ
 .brand{display:flex;align-items:center;gap:10px;font-weight:900}
 .logo{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:white;background:linear-gradient(135deg,#3191ff,#1354d6);font-weight:900;box-shadow:0 7px 18px #1769e833}
 .adminlink{font-size:13px;color:#61708b;text-decoration:none}
-main{width:min(100% - 28px,550px);margin:38px auto;flex:1}
-.card{background:white;border:1px solid var(--line);border-radius:23px;padding:27px;box-shadow:0 20px 60px #173b7510}
+main{width:min(100% - 28px,550px);margin:28px auto;flex:1}
+.card{background:#fff;border:1px solid var(--line);border-radius:23px;padding:27px;box-shadow:0 20px 60px #173b7510}
 .tag{display:inline-block;background:#edf5ff;color:#1763d3;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:850}
 h1{font-size:clamp(25px,5vw,34px);line-height:1.15;letter-spacing:-.7px;margin:17px 0 10px}
 p{font-size:14px;line-height:1.65;color:var(--muted)}
-.step{display:flex;gap:12px;margin:20px 0}
-.num{width:30px;height:30px;flex:none;display:grid;place-items:center;background:#edf5ff;color:#1763d3;border-radius:10px;font-weight:900}
+.step{display:flex;gap:12px;margin:23px 0}
+.num{width:34px;height:34px;flex:none;display:grid;place-items:center;background:#edf5ff;color:#1763d3;border-radius:10px;font-weight:900}
 .step b{font-size:14px}
-.step p{margin:4px 0 0;font-size:13px}
+.step p{margin:5px 0 0;font-size:13px}
+.step-content{flex:1;min-width:0}
 label{display:block;margin:18px 0 8px;font-size:13px;font-weight:800}
 input{width:100%;padding:14px;border:1px solid #dce4f0;border-radius:12px;font:inherit;outline:none;background:#fbfcff}
 input:focus{border-color:#5599ff;box-shadow:0 0 0 4px #1769e814}
@@ -30,6 +31,9 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .primary{background:linear-gradient(135deg,#3191ff,#1354d6);color:#fff;box-shadow:0 8px 20px #1769e82b}
 .secondary{background:#edf3fb;color:#243754}
 .full{width:100%;margin-top:12px}
+.step-link{color:#1769e8;font-weight:800;overflow-wrap:anywhere}
+.guide-image{display:block;width:100%;height:auto;max-width:100%;margin-top:13px;border:1px solid var(--line);border-radius:15px;background:#f4f7fc}
+.caption{font-size:12px!important;margin-top:7px!important}
 .notice{display:none;padding:12px 14px;border-radius:12px;margin-top:13px;font-size:13px;line-height:1.55}
 .notice.show{display:block}
 .error{background:#fff0f0;color:#a32323}
@@ -47,10 +51,10 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .codebox input{font-weight:900;letter-spacing:2px;text-transform:uppercase}
 .codebox button{white-space:nowrap}
 .divider{height:1px;background:var(--line);margin:23px 0}
-footer{text-align:center;padding:22px 22px 105px;color:#8994a7;font-size:12px;line-height:1.8}
+footer{text-align:center;padding:22px 22px 95px;color:#8994a7;font-size:12px;line-height:1.8}
 .floating-b{position:fixed;right:16px;bottom:16px;z-index:10;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
 .support-label{font-size:10px;font-weight:900;color:#145bd1;background:#fff;border:1px solid #dce8fa;border-radius:999px;padding:5px 8px;box-shadow:0 5px 18px #173b7518}
-#floatB{width:52px;height:52px;border-radius:50%;padding:0;display:grid;place-items:center;font-size:23px;font-weight:900;color:#fff;background:linear-gradient(135deg,#3191ff,#1354d6);box-shadow:0 8px 24px #1769e844;cursor:default;user-select:none;pointer-events:none}
+#floatB{width:52px;height:52px;border-radius:50%;padding:0;display:grid;place-items:center;font-size:23px;font-weight:900;color:#fff;background:linear-gradient(135deg,#3191ff,#1354d6);box-shadow:0 8px 24px #1769e844;user-select:none;pointer-events:none}
 @media(max-width:480px){.card{padding:20px}.codebox{flex-direction:column}.codebox button{width:100%}}
 </style>
 </head>
@@ -67,45 +71,49 @@ footer{text-align:center;padding:22px 22px 105px;color:#8994a7;font-size:12px;li
 <main>
 <section class="card">
   <span class="tag">● CỔNG NHẬN MÃ</span>
-  <h1>Nhận mã để tiếp tục</h1>
-  <p>Nhấn nút nhận mã bên dưới và chờ đủ 60 giây. Sau khi hết giờ, hệ thống sẽ chọn một mã còn khả dụng để bạn sử dụng.</p>
+  <h1>Hướng dẫn nhận mã</h1>
+  <p>Làm theo 3 bước bên dưới để nhận mã và quay lại đây xác nhận.</p>
 
   <div class="step">
     <span class="num">1</span>
-    <div><b>Bắt đầu nhận mã</b><p>Nhấn nút nhận mã và chờ đủ 60 giây.</p></div>
+    <div class="step-content">
+      <b>Bước 1: Truy cập website</b>
+      <p>Nhấn vào liên kết bên dưới để mở website DuyKiet Shop.</p>
+      <a class="step-link" href="https://www.duykietshop.gt.tc/" target="_blank" rel="noopener">
+        www.duykietshop.gt.tc ↗
+      </a>
+    </div>
   </div>
+
   <div class="step">
     <span class="num">2</span>
-    <div><b>Sao chép mã</b><p>Mã sẽ hiển thị khi đồng hồ đếm ngược kết thúc.</p></div>
+    <div class="step-content">
+      <b>Bước 2: Nhấn logo B và chờ 60 giây</b>
+      <p>Sau khi vào website DuyKiet Shop, kéo xuống dưới trang, nhấn logo chữ B và chờ đủ 60 giây để nhận mã.</p>
+      <a href="https://cdn.phototourl.com/member/2026-10-12-b04ca212-8d1a-47a2-b6d5-e77122d04fd8.png" target="_blank" rel="noopener">
+        <img class="guide-image"
+          src="https://cdn.phototourl.com/member/2026-10-12-b04ca212-8d1a-47a2-b6d5-e77122d04fd8.png"
+          alt="Ảnh minh họa vị trí logo B trên website nhận mã"
+          loading="lazy">
+      </a>
+      <p class="caption">Ảnh minh họa bước 2 · Nhấn vào ảnh để xem lớn.</p>
+    </div>
   </div>
+
   <div class="step">
     <span class="num">3</span>
-    <div><b>Xác nhận mã</b><p>Dán mã vào ô bên dưới để kiểm tra và tiếp tục.</p></div>
-  </div>
-
-  <button class="primary full" id="start" type="button">Nhận mã — chờ 60 giây</button>
-
-  <div class="wait" id="wait">
-    <div class="ring" id="ring"></div>
-    <div class="timer" id="timer">60</div>
-    <b id="waitTitle">Đang chờ…</b>
-    <p id="waitText">Vui lòng đợi hết thời gian.</p>
-  </div>
-
-  <div class="codearea" id="codearea">
-    <label for="shown">Mã nhận được</label>
-    <div class="codebox">
-      <input id="shown" readonly value="">
-      <button class="secondary" id="copy" type="button">Sao chép</button>
+    <div class="step-content">
+      <b>Bước 3: Sao chép và nhập mã</b>
+      <p>Sao chép mã trên website DuyKiet Shop, quay lại trang Vượt Link 404 này và dán mã vào ô bên dưới.</p>
     </div>
-    <p style="font-size:12px">Mã được chọn từ danh sách mã còn khả dụng.</p>
   </div>
 
   <div class="divider"></div>
-  <label for="code">Dán mã</label>
-  <input id="code" maxlength="80" placeholder="Nhập mã..." autocomplete="off">
-  <button class="primary full" id="confirm" type="button">Xác nhận</button>
-  <div class="notice" id="notice"></div>
+
+  <label for="code">Mã của bạn</label>
+  <input id="code" maxlength="80" placeholder="Dán mã nhận được vào đây..." autocomplete="off">
+  <button class="primary full" id="confirm" type="button">Xác nhận mã</button>
+  <div class="notice" id="notice" role="status"></div>
 </section>
 </main>
 
@@ -114,8 +122,8 @@ footer{text-align:center;padding:22px 22px 105px;color:#8994a7;font-size:12px;li
   <div>© <span id="year"></span> Vượt Link 404 · Cổng nhận mã</div>
 </footer>
 
-<!-- Logo B chỉ để trang trí, không có chức năng đếm ngược -->
-<div class="floating-b" aria-label="Logo mẫu">
+<!-- Logo B ở đây chỉ là hình trang trí -->
+<div class="floating-b" aria-label="Logo trang trí">
   <div class="support-label">HỖ TRỢ 24/7</div>
   <div id="floatB" aria-hidden="true">B</div>
 </div>
@@ -124,15 +132,15 @@ footer{text-align:center;padding:22px 22px 105px;color:#8994a7;font-size:12px;li
 const $ = id => document.getElementById(id);
 $('year').textContent = new Date().getFullYear();
 
-let ready = false;
-let left = 60;
-let tick = null;
-let selected = null;
-
 function note(message, type = 'info') {
   $('notice').textContent = message;
   $('notice').className = 'notice show ' + type;
 }
+
+/*
+  Trang này chỉ hướng dẫn và kiểm tra mã đã nhận.
+  Logo B không chạy đồng hồ trên trang Vượt Link 404.
+*/
 
 function getConfig() {
   try {
@@ -144,107 +152,42 @@ function getConfig() {
   }
 }
 
-function finishWait() {
-  clearInterval(tick);
-  tick = null;
-
-  const cfg = getConfig();
-  const keys = Array.isArray(cfg.keys)
-    ? cfg.keys.filter(x => x && x.key && x.url)
-    : [];
-
-  if (!keys.length) {
-    $('ring').classList.add('done');
-    $('ring').textContent = '!';
-    $('timer').textContent = '—';
-    $('waitTitle').textContent = 'Chưa có mã khả dụng';
-    $('waitText').textContent =
-      'Quản trị viên cần thêm mã trong admin.html.';
-    $('start').disabled = false;
-    $('start').textContent = 'Nhận mã lại — 60 giây';
-    return;
-  }
-
-  const index = Math.floor(Math.random() * keys.length);
-  selected = keys[index];
-
-  cfg.keys.splice(index, 1);
-  localStorage.setItem('duykiet_gate_config', JSON.stringify(cfg));
-
-  ready = true;
-  $('shown').value = selected.key;
-  $('ring').classList.add('done');
-  $('ring').textContent = '✓';
-  $('timer').textContent = 'XONG';
-  $('waitTitle').textContent = 'Mã ngẫu nhiên đã sẵn sàng';
-  $('waitText').textContent =
-    'Mã đã được lấy khỏi danh sách mã khả dụng.';
-  $('codearea').classList.add('show');
-  $('start').disabled = false;
-  $('start').textContent = 'Nhận mã tiếp theo — 60 giây';
-}
-
-$('start').onclick = () => {
-  if (tick) clearInterval(tick);
-
-  ready = false;
-  selected = null;
-  left = 60;
-
-  $('shown').value = '';
-  $('start').disabled = true;
-  $('wait').classList.add('show');
-  $('codearea').classList.remove('show');
-  $('ring').classList.remove('done');
-  $('ring').textContent = '';
-  $('timer').textContent = left;
-  $('waitTitle').textContent = 'Vui lòng chờ để nhận mã';
-  $('waitText').textContent = 'Mã sẽ được chọn khi đồng hồ về 0.';
-  $('notice').className = 'notice';
-
-  tick = setInterval(() => {
-    left--;
-    $('timer').textContent = left;
-    if (left <= 0) finishWait();
-  }, 1000);
-};
-
-$('copy').onclick = async () => {
-  if (!selected) {
-    return note('Bạn chưa nhận được mã.', 'error');
-  }
-
-  try {
-    await navigator.clipboard.writeText(selected.key);
-    note('Đã sao chép mã ' + selected.key + '.', 'success');
-  } catch (e) {
-    $('shown').select();
-    document.execCommand('copy');
-    note('Đã chọn mã để sao chép.', 'success');
-  }
-};
-
 $('confirm').onclick = () => {
   const code = $('code').value.trim().toUpperCase();
 
-  if (!code) return note('Vui lòng nhập mã.', 'error');
-
-  if (!ready || !selected) {
-    return note('Bạn cần chờ đủ 60 giây để nhận mã trước.', 'error');
+  if (!code) {
+    note('Vui lòng dán mã bạn đã nhận.', 'error');
+    return;
   }
 
-  if (code !== String(selected.key).toUpperCase()) {
-    return note('Mã không khớp với mã bạn vừa nhận.', 'error');
+  const cfg = getConfig();
+  const keys = Array.isArray(cfg.keys) ? cfg.keys : [];
+
+  /*
+    Chỉ kiểm tra cấu hình có sẵn trong trình duyệt hiện tại.
+    Mã đã bị xóa khỏi danh sách hoặc nằm trên thiết bị khác
+    sẽ không được xác minh bằng localStorage này.
+  */
+  const match = keys.find(item =>
+    item && item.key &&
+    String(item.key).toUpperCase() === code
+  );
+
+  if (!match) {
+    note(
+      'Không tìm thấy mã trong cấu hình trên trình duyệt này. Nếu bạn đã nhận mã ở thiết bị khác, cần kết nối hệ thống xác minh dùng chung.',
+      'error'
+    );
+    return;
   }
 
   let url;
   try {
-    url = new URL(selected.url);
-    if (!['https:', 'http:'].includes(url.protocol)) {
-      throw new Error('URL không hợp lệ');
-    }
+    url = new URL(match.url);
+    if (!['https:', 'http:'].includes(url.protocol)) throw new Error();
   } catch (e) {
-    return note('URL chuyển hướng không hợp lệ.', 'error');
+    note('URL chuyển hướng không hợp lệ.', 'error');
+    return;
   }
 
   note('Mã hợp lệ. Đang chuyển hướng…', 'success');
@@ -252,8 +195,6 @@ $('confirm').onclick = () => {
     location.href = url.href;
   }, 600);
 };
-
-/* Không gắn sự kiện click cho logo B */
 </script>
 </body>
 </html>
