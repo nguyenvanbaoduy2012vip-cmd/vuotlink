@@ -16,10 +16,35 @@
 <button class="logo" id="start" type="button" aria-label="Nhấn logo B để bắt đầu nhận mã" style="width:76px;height:76px;font-size:30px;border:0;cursor:pointer;display:grid;margin:18px auto 0">B</button>
 <p style="text-align:center;font-size:12px;margin-top:8px">Nhấn logo B để bắt đầu đếm 60 giây</p>
 <div class="wait" id="wait"><div class="ring" id="ring"></div><div class="timer" id="timer">60</div><b id="waitTitle">Đang chờ…</b><p id="waitText">Vui lòng đợi hết thời gian.</p></div>
-<div class="codearea" id="codearea"><label for="shown">Mã nhận được</label><div class="codebox"><input id="shown" readonly value="BDUY"><button class="secondary" id="copy">Sao chép</button></div><p style="font-size:12px">Đây là mã hiển thị mẫu. Mã thực tế sẽ được xác minh bằng Supabase sau khi có SQL và Edge Function.</p></div>
+<div class="codearea" id="codearea"><label for="shown">Mã nhận được</label><div class="codebox"><input id="shown" readonly value="BDUY"><button class="secondary" id="copy">Sao chép</button></div><p style="font-size:12px">Mỗi mã chỉ dùng được một lần. Sau khi xác nhận thành công, mã sẽ bị xóa khỏi danh sách.</p></div>
 <div class="divider"></div><label for="code">Dán mã</label><input id="code" maxlength="80" placeholder="Nhập mã..." autocomplete="off"><button class="primary full" id="confirm">Xác nhận</button><div class="notice" id="notice"></div>
 </section></main><footer>© <span id="year"></span> DuyKiet Shop · Cổng nhận mã</footer>
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
-// Logo B chỉ là hình minh họa. Không gắn sự kiện đếm giờ.
+const $=id=>document.getElementById(id);
+const readConfig=()=>{try{const c=JSON.parse(localStorage.getItem('duykiet_gate_config')||'{"keys":[]}');return c&&Array.isArray(c.keys)?c:{keys:[]}}catch(e){return{keys:[]}}};
+const writeConfig=c=>localStorage.setItem('duykiet_gate_config',JSON.stringify(c));
+let timer=null,endAt=0,shownCode='';
+function notice(msg,type='info'){$('notice').textContent=msg;$('notice').className='notice show '+type}
+$('start').addEventListener('click',()=>{
+  $('wait').classList.add('show');$('codearea').classList.remove('show');$('ring').classList.remove('done');$('ring').textContent='';
+  $('waitTitle').textContent='Đang chờ…';$('waitText').textContent='Vui lòng đợi hết thời gian.';
+  if(timer)clearInterval(timer);endAt=Date.now()+60000;tick();timer=setInterval(tick,250);
+});
+function tick(){const left=Math.max(0,Math.ceil((endAt-Date.now())/1000));$('timer').textContent=left+'s';if(left>0)return;clearInterval(timer);timer=null;$('ring').classList.add('done');$('ring').textContent='✓';$('waitTitle').textContent='Đã hết thời gian';$('waitText').textContent='Nhập mã được cấp để tiếp tục.';}
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('shown').value);notice('Đã sao chép mã.','success')}catch(e){$('shown').select();notice('Hãy sao chép mã thủ công.')}});
+$('confirm').addEventListener('click',()=>{
+  const entered=$('code').value.trim().toUpperCase();
+  if(!entered)return notice('Vui lòng nhập mã.','error');
+  const cfg=readConfig();
+  const idx=cfg.keys.findIndex(x=>String(x.key||'').trim().toUpperCase()===entered);
+  if(idx<0)return notice('Mã không hợp lệ hoặc đã được sử dụng.','error');
+  const item=cfg.keys[idx];
+  // Consume the key before redirecting so it cannot be submitted again in this browser.
+  cfg.keys.splice(idx,1);
+  try{writeConfig(cfg)}catch(e){return notice('Không thể đánh dấu mã đã dùng. Hãy thử lại.','error')}
+  shownCode=entered;$('shown').value=entered;$('codearea').classList.add('show');
+  notice('Mã hợp lệ. Đang chuyển hướng…','success');
+  if(item.url){setTimeout(()=>{location.href=item.url},700)}
+});
 </script></body></html>
