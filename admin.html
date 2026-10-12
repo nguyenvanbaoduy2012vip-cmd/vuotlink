@@ -18,7 +18,7 @@
 <section class="hidden" id="noPerm"><div class="card"><h1>CHƯA CÓ QUYỀN ADMIN</h1><p>Đã đăng nhập Supabase nhưng tài khoản chưa có role <b>admin</b> trong <code>gate_profiles</code>.</p><button class="secondary" id="backAuth">Đăng xuất</button></div></section>
 <section class="hidden" id="dashboard"><div class="dashhead"><div><h1>Quản lý mã & URL đối tác</h1><p id="signedIn" style="margin:5px 0 0"></p></div><div><span class="status">QUYỀN ADMIN</span> <button class="secondary" id="logout">Đăng xuất</button></div></div>
 <div class="warn">Đăng nhập và kiểm tra quyền đã dùng Supabase. Riêng danh sách mã bên dưới vẫn lưu trong trình duyệt này (localStorage), chưa đồng bộ giữa thiết bị hoặc người dùng.</div>
-<div class="grid"><div class="card"><h2>Thêm mã đối tác</h2><p>Ví dụ khách nhập BDUY thì chuyển hướng đến URL đã gắn.</p><div class="field"><label for="keyInput">Mã</label><input id="keyInput" maxlength="80" placeholder="BDUY"></div><div class="field"><label for="urlInput">URL chuyển hướng</label><input id="urlInput" type="url" placeholder="https://example.com/partner"></div><button class="primary full" id="addKey">Thêm mã + URL</button><div class="notice" id="keyNotice"></div></div>
+<div class="grid"><div class="card"><h2>Thêm mã đối tác</h2><p>Ví dụ khách nhập BDUY thì chuyển hướng đến URL đã gắn.</p><div class="field"><label for="keyInput">Danh sách mã (mỗi dòng một mã)</label><textarea id="keyInput" rows="5" maxlength="8000" placeholder="BDUY001&#10;BDUY002&#10;BDUY003"></textarea><small class="hint">Có thể dán nhiều mã cùng lúc, mỗi dòng một mã. Tất cả sẽ dùng chung URL bên dưới.</small></div><div class="field"><label for="urlInput">URL chuyển hướng</label><input id="urlInput" type="url" placeholder="https://example.com/partner"></div><button class="primary full" id="addKey">Thêm mã + URL</button><div class="notice" id="keyNotice"></div></div>
 <div class="card"><h2>Danh sách mã</h2><p class="hint">Các mã hiện chỉ lưu trong trình duyệt đang dùng.</p><div id="keyList"></div><p id="emptyText">Chưa có mã nào.</p></div></div>
 </section></div>
 <script>
@@ -132,12 +132,20 @@ function renderKeys(){
   })
 }
 $('addKey').onclick=()=>{
-  const key=$('keyInput').value.trim().toUpperCase(),url=$('urlInput').value.trim();
-  if(!key||!url)return note('keyNotice','Vui lòng nhập đủ mã và URL.','error');
+  const raw=$('keyInput').value.trim(),url=$('urlInput').value.trim();
+  if(!raw||!url)return note('keyNotice','Vui lòng nhập ít nhất một mã và URL.','error');
   let u;try{u=new URL(url);if(!['https:','http:'].includes(u.protocol))throw 0}catch(e){return note('keyNotice','URL không hợp lệ. Hãy nhập https:// hoặc http://.','error')}
-  const c=getConfig();if(c.keys.some(x=>String(x.key).toUpperCase()===key))return note('keyNotice','Mã này đã tồn tại.','error');
-  try{c.keys.push({key,url:u.href});saveConfig(c)}catch(e){return note('keyNotice','Không lưu được dữ liệu trong trình duyệt. Hãy kiểm tra bộ nhớ hoặc cài đặt riêng tư.','error')} $('keyInput').value='';$('urlInput').value='';
-  note('keyNotice','Đã thêm mã và URL trong trình duyệt này.','success');renderKeys()
+  const inputKeys=[...new Set(raw.split(/[\n,;]+/).map(x=>x.trim().toUpperCase()).filter(Boolean))];
+  const c=getConfig(),existing=new Set(c.keys.map(x=>String(x.key).toUpperCase()));
+  const duplicates=inputKeys.filter(k=>existing.has(k));
+  const fresh=inputKeys.filter(k=>!existing.has(k));
+  if(!fresh.length)return note('keyNotice','Tất cả mã này đã tồn tại.','error');
+  try{
+    fresh.forEach(key=>c.keys.push({key,url:u.href}));
+    saveConfig(c);
+  }catch(e){return note('keyNotice','Không lưu được dữ liệu trong trình duyệt.','error')}
+  $('keyInput').value='';$('urlInput').value='';
+  note('keyNotice',`Đã thêm ${fresh.length} mã.${duplicates.length?` Bỏ qua ${duplicates.length} mã bị trùng.`:''}`, 'success');renderKeys()
 };
 (async()=>{
   await loadSupabaseLibrary();
