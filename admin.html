@@ -29,8 +29,9 @@ let supabase=null;
 async function loadSupabaseLibrary(){
   if(window.supabase && typeof window.supabase.createClient==='function') return;
   const urls=[
-    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2',
-    'https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js'
+    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js',
+    'https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/supabase/2.45.4/umd/supabase.min.js'
   ];
   for(const url of urls){
     try{
@@ -45,7 +46,7 @@ async function loadSupabaseLibrary(){
       if(window.supabase && typeof window.supabase.createClient==='function') return;
     }catch(err){ /* thử CDN tiếp theo */ }
   }
-  throw new Error('Không tải được thư viện Supabase từ cả hai CDN. Hãy đổi mạng, tắt chặn quảng cáo/DNS riêng tư hoặc thử lại sau.');
+  throw new Error('Không tải được thư viện Supabase từ 3 nguồn. Hãy kiểm tra mạng/DNS riêng tư hoặc mở bằng Chrome rồi tải lại. Nếu vẫn lỗi, cần kiểm tra chặn CDN trên mạng đang dùng.');
 }
 function getClient(){
   if(!window.supabase || typeof window.supabase.createClient!=='function') throw new Error('Thư viện Supabase chưa được tải.');
