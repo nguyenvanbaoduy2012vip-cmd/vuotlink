@@ -4,39 +4,100 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DuyKiet Shop · Admin</title>
 <style>
-:root{--blue:#1769e8;--ink:#152442;--muted:#6d7890;--line:#e4eaf3;--bg:#f4f7fc}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink)}header{height:68px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,calc((100% - 1050px)/2))}.brand{font-weight:900;display:flex;align-items:center;gap:10px}.logo{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3191ff,#1354d6);display:grid;place-items:center;color:white}.link{color:#1767df;text-decoration:none;font-size:13px;font-weight:750}.wrap{width:min(100% - 28px,1000px);margin:30px auto}.card{background:white;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 14px 45px #18375d0a}h1{font-size:27px;margin:0 0 7px}h2{font-size:18px;margin:0 0 12px}p{color:var(--muted);font-size:14px;line-height:1.6}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{margin:15px 0}label{display:block;font-size:13px;font-weight:850;margin-bottom:7px}input{width:100%;padding:13px 14px;border:1px solid #dce4f0;border-radius:12px;font:inherit;outline:none}input:focus{border-color:#4895ff;box-shadow:0 0 0 4px #1769e813}button{font:inherit;font-weight:850;border:0;border-radius:12px;padding:12px 15px;cursor:pointer}.primary{background:linear-gradient(135deg,#3191ff,#1354d6);color:white}.secondary{background:#edf3fb;color:#233754}.danger{background:#fff0f0;color:#b12727}.full{width:100%}.tabs{display:flex;gap:8px;margin:20px 0}.tabs button{flex:1}.tabs .active{background:#e8f2ff;color:#145bd1}.notice{display:none;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.5;margin-top:13px}.notice.show{display:block}.notice.error{background:#fff0f0;color:#a32323}.notice.info{background:#edf5ff;color:#1656ad}.notice.success{background:#eafaf1;color:#126c3a}.hidden{display:none!important}.auth{max-width:470px;margin:18px auto}.status{font-size:12px;background:#fff2d9;color:#8b5700;padding:7px 10px;border-radius:999px;font-weight:850}.item{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:10px;display:flex;justify-content:space-between;gap:12px;align-items:center;overflow-wrap:anywhere}.item small{display:block;color:var(--muted);margin-top:5px}.hint{font-size:12px}.warn{border-left:4px solid #f2ad36;background:#fff8e9;padding:12px 14px;border-radius:8px;color:#72501a;font-size:13px;line-height:1.6;margin:16px 0}.dashhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}@media(max-width:720px){.grid{grid-template-columns:1fr}.wrap{margin:18px auto}.card{padding:19px}.dashhead{align-items:flex-start;flex-direction:column}}
+:root{--blue:#1769e8;--ink:#152442;--muted:#6d7890;--line:#e4eaf3;--bg:#f4f7fc}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink)}header{height:68px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,calc((100% - 1050px)/2))}.brand{font-weight:900;display:flex;align-items:center;gap:10px}.logo{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3191ff,#1354d6);display:grid;place-items:center;color:white}.link{color:#1767df;text-decoration:none;font-size:13px;font-weight:750}.wrap{width:min(100% - 28px,1000px);margin:30px auto}.card{background:white;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 14px 45px #18375d0a}h1{font-size:27px;margin:0 0 7px}h2{font-size:18px;margin:0 0 12px}p{color:var(--muted);font-size:14px;line-height:1.6}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{margin:15px 0}label{display:block;font-size:13px;font-weight:850;margin-bottom:7px}input{width:100%;padding:13px 14px;border:1px solid #dce4f0;border-radius:12px;font:inherit;outline:none}input:focus{border-color:#4895ff;box-shadow:0 0 0 4px #1769e813}button{font:inherit;font-weight:850;border:0;border-radius:12px;padding:12px 15px;cursor:pointer}button:disabled{opacity:.6;cursor:wait}.primary{background:linear-gradient(135deg,#3191ff,#1354d6);color:white}.secondary{background:#edf3fb;color:#233754}.danger{background:#fff0f0;color:#b12727}.full{width:100%}.tabs{display:flex;gap:8px;margin:20px 0}.tabs button{flex:1}.tabs .active{background:#e8f2ff;color:#145bd1}.notice{display:none;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.5;margin-top:13px}.notice.show{display:block}.notice.error{background:#fff0f0;color:#a32323}.notice.info{background:#edf5ff;color:#1656ad}.notice.success{background:#eafaf1;color:#126c3a}.hidden{display:none!important}.auth{max-width:470px;margin:18px auto}.status{font-size:12px;background:#fff2d9;color:#8b5700;padding:7px 10px;border-radius:999px;font-weight:850}.item{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:10px;display:flex;justify-content:space-between;gap:12px;align-items:center;overflow-wrap:anywhere}.item small{display:block;color:var(--muted);margin-top:5px}.hint{font-size:12px}.warn{border-left:4px solid #f2ad36;background:#fff8e9;padding:12px 14px;border-radius:8px;color:#72501a;font-size:13px;line-height:1.6;margin:16px 0}.dashhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}@media(max-width:720px){.grid{grid-template-columns:1fr}.wrap{margin:18px auto}.card{padding:19px}.dashhead{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
 <header><div class="brand"><span class="logo">B</span> DUYKIET SHOP <span style="color:#1769e8">/ ADMIN</span></div><a class="link" href="./index.html">← Trang nhận mã</a></header>
 <div class="wrap">
-<section class="card auth" id="authView"><h1>Khu vực quản trị</h1><p>Đăng ký hoặc đăng nhập. Tài khoản mới không tự động có quyền admin.</p>
-<div class="warn"><b>Bản HTML trước SQL:</b> hiện chỉ là giao diện demo lưu tài khoản trong trình duyệt này. Chưa kết nối Supabase Auth/RLS; không dùng làm bảo mật thật.</div>
-<div class="tabs"><button class="secondary active" id="loginTab">Đăng nhập</button><button class="secondary" id="signupTab">Đăng ký</button></div>
+<section class="card auth" id="authView"><h1>Khu vực quản trị</h1><p>Đăng nhập bằng tài khoản Supabase của bạn.</p>
+<div class="warn">Quyền quản trị được kiểm tra từ bảng <b>gate_profiles</b>. Tài khoản mới không tự động có quyền admin.</div>
+<div class="tabs"><button type="button" class="secondary active" id="loginTab">Đăng nhập</button><button type="button" class="secondary" id="signupTab">Đăng ký</button></div>
 <form id="authForm"><div class="field"><label for="email">Email</label><input id="email" type="email" required maxlength="160" autocomplete="username" placeholder="you@example.com"></div><div class="field"><label for="password">Mật khẩu</label><input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="Tối thiểu 6 ký tự"></div><button class="primary full" id="authSubmit">Đăng nhập</button></form><div class="notice" id="authNotice"></div>
 </section>
-<section class="hidden" id="noPerm"><div class="card"><h1>CHƯA CÓ QUYỀN ADMIN NÀO</h1><p>Tài khoản của bạn chưa được cấp quyền quản trị trên Supabase.</p><div class="warn">Khi tạo SQL, chủ sở hữu sẽ cấp role admin cho tài khoản được chọn. Đăng ký không tự cấp quyền admin.</div><button class="secondary" id="backAuth">Đăng xuất</button></div></section>
-<section class="hidden" id="dashboard"><div class="dashhead"><div><h1>Quản lý mã & URL đối tác</h1><p id="signedIn" style="margin:5px 0 0"></p></div><div><span class="status">BẢN XEM TRƯỚC</span> <button class="secondary" id="logout">Đăng xuất</button></div></div>
-<div class="warn">Bản này dùng localStorage để thử giao diện. Quyền admin và dữ liệu chưa được xác thực an toàn trên máy chủ. Supabase URL/key đã được khai báo cho bước tích hợp sau; SQL/RLS/Edge Function chưa được tạo.</div>
+<section class="hidden" id="noPerm"><div class="card"><h1>CHƯA CÓ QUYỀN ADMIN</h1><p>Đã đăng nhập Supabase nhưng tài khoản chưa có role <b>admin</b> trong <code>gate_profiles</code>.</p><button class="secondary" id="backAuth">Đăng xuất</button></div></section>
+<section class="hidden" id="dashboard"><div class="dashhead"><div><h1>Quản lý mã & URL đối tác</h1><p id="signedIn" style="margin:5px 0 0"></p></div><div><span class="status">QUYỀN ADMIN</span> <button class="secondary" id="logout">Đăng xuất</button></div></div>
+<div class="warn">Đăng nhập và kiểm tra quyền đã dùng Supabase. Riêng danh sách mã bên dưới vẫn lưu trong trình duyệt này (localStorage), chưa đồng bộ giữa thiết bị hoặc người dùng.</div>
 <div class="grid"><div class="card"><h2>Thêm mã đối tác</h2><p>Ví dụ khách nhập BDUY thì chuyển hướng đến URL đã gắn.</p><div class="field"><label for="keyInput">Mã</label><input id="keyInput" maxlength="80" placeholder="BDUY"></div><div class="field"><label for="urlInput">URL chuyển hướng</label><input id="urlInput" type="url" placeholder="https://example.com/partner"></div><button class="primary full" id="addKey">Thêm mã + URL</button><div class="notice" id="keyNotice"></div></div>
-<div class="card"><h2>Danh sách mã</h2><p class="hint">Các mã hiện chỉ lưu trong trình duyệt đang dùng.</p><div id="keyList"></div><p id="emptyText" class="muted">Chưa có mã nào.</p></div></div>
+<div class="card"><h2>Danh sách mã</h2><p class="hint">Các mã hiện chỉ lưu trong trình duyệt đang dùng.</p><div id="keyList"></div><p id="emptyText">Chưa có mã nào.</p></div></div>
 </section></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL='https://ndtcokxvaxprgwvqwpqu.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_9qMfRKqwKtiWfK4b7YSJdQ_3WWjANe1';
-const $=id=>document.getElementById(id);let mode='login';
+const $=id=>document.getElementById(id);
+const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+let mode='login';
 const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 function note(id,msg,type='info'){$(id).textContent=msg;$(id).className='notice show '+type}
 function show(id){['authView','noPerm','dashboard'].forEach(x=>$(x).classList.add('hidden'));$(id).classList.remove('hidden')}
 function setMode(m){mode=m;$('loginTab').classList.toggle('active',m==='login');$('signupTab').classList.toggle('active',m==='signup');$('authSubmit').textContent=m==='login'?'Đăng nhập':'Đăng ký';$('password').autocomplete=m==='login'?'current-password':'new-password';$('authNotice').className='notice'}
 $('loginTab').onclick=()=>setMode('login');$('signupTab').onclick=()=>setMode('signup');
-function enter(u){if(u.role==='admin') {show('dashboard');$('signedIn').textContent='Tài khoản: '+u.email;renderKeys()}else show('noPerm')}
-$('authForm').onsubmit=e=>{e.preventDefault();const email=$('email').value.trim().toLowerCase(),password=$('password').value;let users=read('duykiet_gate_users',[]);
-if(mode==='signup'){if(users.some(u=>u.email===email)){note('authNotice','Email này đã đăng ký. Hãy đăng nhập.','error');return}users.push({email,password,role:'user'});write('duykiet_gate_users',users);write('duykiet_gate_current_user',{email,role:'user'});show('noPerm');return}
-const u=users.find(u=>u.email===email&&u.password===password);if(!u){note('authNotice','Sai email/mật khẩu hoặc tài khoản chưa tồn tại.','error');return}write('duykiet_gate_current_user',{email:u.email,role:u.role});enter(u)};
-function logout(){localStorage.removeItem('duykiet_gate_current_user');show('authView');$('password').value=''}$('backAuth').onclick=logout;$('logout').onclick=logout;
-function getConfig(){return read('duykiet_gate_config',{keys:[]})}function saveConfig(c){write('duykiet_gate_config',c)}
-function renderKeys(){const c=getConfig();$('keyList').innerHTML='';$('emptyText').classList.toggle('hidden',c.keys.length>0);c.keys.forEach((it,i)=>{const el=document.createElement('div');el.className='item';const box=document.createElement('div'),b=document.createElement('b'),s=document.createElement('small'),del=document.createElement('button');b.textContent=it.key;s.textContent=it.url;del.className='danger';del.textContent='Xóa';del.onclick=()=>{const n=getConfig();n.keys.splice(i,1);saveConfig(n);renderKeys()};box.append(b,s);el.append(box,del);$('keyList').append(el)})}
-$('addKey').onclick=()=>{const key=$('keyInput').value.trim().toUpperCase(),url=$('urlInput').value.trim();if(!key||!url)return note('keyNotice','Vui lòng nhập đủ mã và URL.','error');let u;try{u=new URL(url);if(!['https:','http:'].includes(u.protocol))throw 0}catch(e){return note('keyNotice','URL không hợp lệ. Hãy nhập https:// hoặc http://.','error')}const c=getConfig();if(c.keys.some(x=>x.key===key))return note('keyNotice','Mã này đã tồn tại.','error');c.keys.push({key,url:u.href});saveConfig(c);$('keyInput').value='';$('urlInput').value='';note('keyNotice','Đã thêm mã và URL trong bản demo.','success');renderKeys()};
-const u=read('duykiet_gate_current_user',null);if(u)enter(u);else show('authView');
+
+async function enterSession(session){
+  if(!session){show('authView');return}
+  const {data:profile,error}=await supabase
+    .from('gate_profiles').select('role')
+    .eq('user_id',session.user.id).maybeSingle();
+  if(error){
+    show('authView');
+    note('authNotice','Đăng nhập được nhưng không đọc được gate_profiles. Kiểm tra RLS/SELECT policy của bảng này: '+error.message,'error');
+    return;
+  }
+  if(profile && String(profile.role).toLowerCase()==='admin'){
+    show('dashboard');$('signedIn').textContent='Tài khoản: '+(session.user.email||'');renderKeys();
+  }else show('noPerm');
+}
+$('authForm').onsubmit=async e=>{
+  e.preventDefault();
+  const email=$('email').value.trim().toLowerCase(),password=$('password').value;
+  const btn=$('authSubmit');btn.disabled=true;$('authNotice').className='notice';
+  try{
+    if(mode==='signup'){
+      const {data,error}=await supabase.auth.signUp({email,password});
+      if(error)throw error;
+      if(data.session){
+        note('authNotice','Đăng ký thành công. Tài khoản chưa có quyền admin.','info');
+        await enterSession(data.session);
+      }else{
+        note('authNotice','Đăng ký được. Hãy kiểm tra email để xác nhận, sau đó đăng nhập.','success');
+      }
+    }else{
+      const {data,error}=await supabase.auth.signInWithPassword({email,password});
+      if(error)throw error;
+      await enterSession(data.session);
+    }
+  }catch(err){note('authNotice',err.message||'Có lỗi khi xác thực Supabase.','error')}
+  finally{btn.disabled=false}
+};
+async function logout(){
+  await supabase.auth.signOut();
+  show('authView');$('password').value='';$('authNotice').className='notice';
+}
+$('backAuth').onclick=logout;$('logout').onclick=logout;
+function getConfig(){return read('duykiet_gate_config',{keys:[]})}
+function saveConfig(c){write('duykiet_gate_config',c)}
+function renderKeys(){
+  const c=getConfig();$('keyList').innerHTML='';$('emptyText').classList.toggle('hidden',c.keys.length>0);
+  c.keys.forEach((it,i)=>{
+    const el=document.createElement('div');el.className='item';
+    const box=document.createElement('div'),b=document.createElement('b'),s=document.createElement('small'),del=document.createElement('button');
+    b.textContent=it.key;s.textContent=it.url;del.className='danger';del.textContent='Xóa';
+    del.onclick=()=>{const n=getConfig();n.keys.splice(i,1);saveConfig(n);renderKeys()};
+    box.append(b,s);el.append(box,del);$('keyList').append(el)
+  })
+}
+$('addKey').onclick=()=>{
+  const key=$('keyInput').value.trim().toUpperCase(),url=$('urlInput').value.trim();
+  if(!key||!url)return note('keyNotice','Vui lòng nhập đủ mã và URL.','error');
+  let u;try{u=new URL(url);if(!['https:','http:'].includes(u.protocol))throw 0}catch(e){return note('keyNotice','URL không hợp lệ. Hãy nhập https:// hoặc http://.','error')}
+  const c=getConfig();if(c.keys.some(x=>x.key===key))return note('keyNotice','Mã này đã tồn tại.','error');
+  c.keys.push({key,url:u.href});saveConfig(c);$('keyInput').value='';$('urlInput').value='';
+  note('keyNotice','Đã thêm mã và URL trong trình duyệt này.','success');renderKeys()
+};
+(async()=>{
+  const {data:{session},error}=await supabase.auth.getSession();
+  if(error){show('authView');note('authNotice',error.message,'error');return}
+  if(session)await enterSession(session);else show('authView');
+})();
 </script></body></html>
