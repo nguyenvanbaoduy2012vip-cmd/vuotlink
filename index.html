@@ -8,7 +8,7 @@
 </style>
 </head>
 <body>
-<header><div class="brand"><span class="logo">B</span><span>DUYKIET <span style="color:#1769e8">SHOP</span></span></div><a class="adminlink" href="./admin.html">Quản trị ↗</a></header>
+<header><div class="brand"><span class="logo" aria-label="Logo minh họa">B</span><span>DUYKIET <span style="color:#1769e8">SHOP</span></span></div><a class="adminlink" href="./admin.html">Quản trị ↗</a></header>
 <main><section class="card">
 <span class="tag">● CỔNG NHẬN MÃ</span><h1>Nhận mã để tiếp tục</h1><p>Làm theo 2 bước bên dưới. Đồng hồ chỉ bắt đầu khi bạn nhấn logo chữ B ở cuối trang.</p>
 <div class="step"><span class="num">1</span><div><b>Truy cập website</b><p>Mở <a href="https://www.duykietshop.gt.tc" target="_blank" rel="noopener">www.duykietshop.gt.tc</a>.</p></div></div>
@@ -20,15 +20,6 @@
 <div class="divider"></div><label for="code">Dán mã</label><input id="code" maxlength="80" placeholder="Nhập mã..." autocomplete="off"><button class="primary full" id="confirm">Xác nhận</button><div class="notice" id="notice"></div>
 </section></main><footer>© <span id="year"></span> DuyKiet Shop · Cổng nhận mã</footer>
 <script>
-const SUPABASE_URL='https://ndtcokxvaxprgwvqwpqu.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY='sb_publishable_9qMfRKqwKtiWfK4b7YSJdQ_3WWjANe1';
 document.getElementById('year').textContent=new Date().getFullYear();
-const $=id=>document.getElementById(id);let ready=false,left=60,tick=null;
-function note(t,c='info'){$('notice').textContent=t;$('notice').className='notice show '+c}
-$('start').onclick=()=>{if(tick)clearInterval(tick);left=60;ready=false;$('start').disabled=true;$('wait').classList.add('show');$('codearea').classList.remove('show');$('ring').classList.remove('done');$('ring').textContent='';$('timer').textContent=60;$('notice').className='notice';tick=setInterval(()=>{left--;$('timer').textContent=left;if(left<=0){clearInterval(tick);tick=null;ready=true;$('ring').classList.add('done');$('ring').textContent='✓';$('timer').textContent='XONG';$('waitTitle').textContent='Bạn đã có thể nhận mã';$('waitText').textContent='Sao chép mã rồi dán vào ô xác nhận.';$('codearea').classList.add('show');$('start').disabled=false;$('start').textContent='B'}},1000)};
-$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('shown').value);note('Đã sao chép mã BDUY.','success')}catch(e){$('shown').select();document.execCommand('copy');note('Đã chọn mã để sao chép.','success')}};
-$('confirm').onclick=()=>{const code=$('code').value.trim().toUpperCase();if(!code)return note('Vui lòng nhập mã.','error');if(!ready)return note('Bạn cần chờ đủ 60 giây trước khi xác nhận.','error');
-const config=JSON.parse(localStorage.getItem('duykiet_gate_config')||'null');const keys=config&&Array.isArray(config.keys)?config.keys:[];const found=keys.find(x=>String(x.key||'').toUpperCase()===code&&x.url);
-if(found){let u;try{u=new URL(found.url);if(!['https:','http:'].includes(u.protocol))throw 0}catch(e){return note('URL chuyển hướng không hợp lệ.','error')}note('Mã hợp lệ. Đang chuyển hướng…','success');setTimeout(()=>location.href=u.href,600)}
-else note('Mã không đúng hoặc chưa có URL đối tác. Khi hoàn thiện Supabase, việc kiểm tra sẽ được chuyển sang máy chủ.','error')};
+// Logo B chỉ là hình minh họa. Không gắn sự kiện đếm giờ.
 </script></body></html>
