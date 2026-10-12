@@ -26,13 +26,15 @@
 const SUPABASE_URL='https://ndtcokxvaxprgwvqwpqu.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_9qMfRKqwKtiWfK4b7YSJdQ_3WWjANe1';
 const $=id=>document.getElementById(id);
-const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+let supabase=null;
+try { if(window.supabase && window.supabase.createClient) supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY); } catch(e) {}
 let mode='login';
 const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 function note(id,msg,type='info'){$(id).textContent=msg;$(id).className='notice show '+type}
 function show(id){['authView','noPerm','dashboard'].forEach(x=>$(x).classList.add('hidden'));$(id).classList.remove('hidden')}
 function setMode(m){mode=m;$('loginTab').classList.toggle('active',m==='login');$('signupTab').classList.toggle('active',m==='signup');$('authSubmit').textContent=m==='login'?'Đăng nhập':'Đăng ký';$('password').autocomplete=m==='login'?'current-password':'new-password';$('authNotice').className='notice'}
 $('loginTab').onclick=()=>setMode('login');$('signupTab').onclick=()=>setMode('signup');
+if(!supabase) note('authNotice','Không tải được thư viện Supabase. Hãy kiểm tra mạng hoặc tải lại trang.','error');
 
 async function enterSession(session){
   if(!session){show('authView');return}
@@ -53,6 +55,7 @@ $('authForm').onsubmit=async e=>{
   const email=$('email').value.trim().toLowerCase(),password=$('password').value;
   const btn=$('authSubmit');btn.disabled=true;$('authNotice').className='notice';
   try{
+    if(!supabase) throw new Error('Không tải được thư viện Supabase. Hãy đổi mạng hoặc tải lại trang.');
     if(mode==='signup'){
       const {data,error}=await supabase.auth.signUp({email,password});
       if(error)throw error;
@@ -71,7 +74,7 @@ $('authForm').onsubmit=async e=>{
   finally{btn.disabled=false}
 };
 async function logout(){
-  await supabase.auth.signOut();
+  if(supabase) await supabase.auth.signOut();
   show('authView');$('password').value='';$('authNotice').className='notice';
 }
 $('backAuth').onclick=logout;$('logout').onclick=logout;
@@ -96,6 +99,7 @@ $('addKey').onclick=()=>{
   note('keyNotice','Đã thêm mã và URL trong trình duyệt này.','success');renderKeys()
 };
 (async()=>{
+  if(!supabase){show('authView');return}
   const {data:{session},error}=await supabase.auth.getSession();
   if(error){show('authView');note('authNotice',error.message,'error');return}
   if(session)await enterSession(session);else show('authView');
