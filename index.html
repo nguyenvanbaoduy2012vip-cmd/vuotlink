@@ -1,16 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#1769e8">
-<meta name="description" content="Cổng nhận và xác minh mã Vượt Link 404.">
 <title>Vượt Link 404 · Nhận mã</title>
 
 <style>
 :root {
   --blue: #1769e8;
-  --blue-dark: #1354d6;
+  --dark-blue: #1354d6;
   --ink: #152442;
   --muted: #6d7890;
   --line: #e4eaf3;
@@ -26,7 +25,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   color: var(--ink);
   background:
     radial-gradient(circle at 50% 0, #e4efff, transparent 38%),
@@ -59,13 +58,13 @@ header {
   place-items: center;
   color: white;
   background: linear-gradient(135deg, #3191ff, #1354d6);
+  font-size: 10px;
   font-weight: 900;
   box-shadow: 0 7px 18px #1769e833;
 }
 
 .logo::after {
   content: "404";
-  font-size: 10px;
 }
 
 .adminlink {
@@ -79,7 +78,7 @@ header {
 }
 
 main {
-  width: min(100% - 28px, 550px);
+  width: min(550px, calc(100% - 28px));
   margin: 28px auto;
   flex: 1;
 }
@@ -162,7 +161,7 @@ p {
   margin-top: 13px;
   border: 1px solid var(--line);
   border-radius: 15px;
-  background: #f4f7fc;
+  background: var(--bg);
 }
 
 .caption {
@@ -185,7 +184,9 @@ input {
   font: inherit;
   outline: none;
   background: #fbfcff;
-  text-transform: uppercase;
+
+  /* Không tự chuyển chữ thường thành chữ hoa */
+  text-transform: none;
 }
 
 input:focus {
@@ -214,7 +215,7 @@ button:disabled {
 }
 
 .primary:hover:not(:disabled) {
-  filter: brightness(1.04);
+  filter: brightness(1.05);
 }
 
 .full {
@@ -228,7 +229,7 @@ button:disabled {
   border-radius: 12px;
   margin-top: 13px;
   font-size: 13px;
-  line-height: 1.55;
+  line-height: 1.6;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
@@ -274,7 +275,6 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
   pointer-events: none;
 }
 
@@ -282,22 +282,16 @@ footer {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  padding: 0;
   display: grid;
   place-items: center;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 900;
   color: #fff;
   background: linear-gradient(135deg, #3191ff, #1354d6);
   box-shadow: 0 8px 24px #1769e844;
-  user-select: none;
 }
 
 @media (max-width: 480px) {
-  .card {
-    padding: 20px;
-  }
-
   header {
     padding-left: 15px;
     padding-right: 15px;
@@ -306,6 +300,10 @@ footer {
   main {
     margin-top: 18px;
   }
+
+  .card {
+    padding: 20px;
+  }
 }
 </style>
 
@@ -313,30 +311,41 @@ footer {
 </head>
 
 <body>
+
 <header>
   <div class="brand">
     <span class="logo" aria-hidden="true"></span>
     <span>Vượt Link <span style="color:#1769e8">404</span></span>
   </div>
+
   <a class="adminlink" href="./admin.html">Quản trị ↗</a>
 </header>
 
 <main>
 <section class="card">
+
   <span class="tag">● CỔNG NHẬN MÃ</span>
 
   <h1>Hướng dẫn nhận mã</h1>
-  <p>Làm theo 3 bước bên dưới để nhận mã và quay lại đây xác nhận.</p>
+
+  <p>
+    Làm theo 3 bước bên dưới để nhận mã và quay lại đây xác nhận.
+  </p>
 
   <div class="step">
     <span class="num">1</span>
+
     <div class="step-content">
       <b>Bước 1: Truy cập website</b>
+
       <p>Nhấn vào liên kết bên dưới để mở website DuyKiet Shop.</p>
-      <a class="step-link"
-         href="https://www.duykietshop.gt.tc/"
-         target="_blank"
-         rel="noopener noreferrer">
+
+      <a
+        class="step-link"
+        href="https://www.duykietshop.gt.tc/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         www.duykietshop.gt.tc ↗
       </a>
     </div>
@@ -344,49 +353,72 @@ footer {
 
   <div class="step">
     <span class="num">2</span>
+
     <div class="step-content">
       <b>Bước 2: Nhấn logo B và chờ 60 giây</b>
-      <p>Sau khi vào website DuyKiet Shop, kéo xuống dưới trang, nhấn logo chữ B và chờ đủ 60 giây để nhận mã.</p>
 
-      <a href="https://cdn.phototourl.com/member/2026-10-12-b04ca212-8d1a-47a2-b6d5-e77122d04fd8.png"
-         target="_blank"
-         rel="noopener noreferrer">
+      <p>
+        Sau khi vào website DuyKiet Shop, kéo xuống dưới trang,
+        nhấn logo chữ B và chờ đủ 60 giây để nhận mã.
+      </p>
+
+      <a
+        href="https://cdn.phototourl.com/member/2026-10-12-b04ca212-8d1a-47a2-b6d5-e77122d04fd8.png"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           class="guide-image"
           src="https://cdn.phototourl.com/member/2026-10-12-b04ca212-8d1a-47a2-b6d5-e77122d04fd8.png"
-          alt="Ảnh minh họa vị trí logo B trên website nhận mã"
-          loading="lazy">
+          alt="Ảnh minh họa vị trí logo B"
+          loading="lazy"
+        >
       </a>
 
-      <p class="caption">Ảnh minh họa bước 2 · Nhấn vào ảnh để xem lớn.</p>
+      <p class="caption">
+        Ảnh minh họa bước 2 · Nhấn vào ảnh để xem lớn.
+      </p>
     </div>
   </div>
 
   <div class="step">
     <span class="num">3</span>
+
     <div class="step-content">
       <b>Bước 3: Sao chép và nhập mã</b>
-      <p>Sao chép mã trên website DuyKiet Shop, quay lại trang này và dán mã vào ô bên dưới.</p>
+
+      <p>
+        Sao chép mã trên website DuyKiet Shop, quay lại trang này
+        và dán mã vào ô bên dưới.
+      </p>
     </div>
   </div>
 
   <div class="divider"></div>
 
   <label for="code">Mã của bạn</label>
+
   <input
     id="code"
     type="text"
     maxlength="80"
     placeholder="Dán mã nhận được vào đây..."
     autocomplete="off"
-    autocapitalize="characters"
-    spellcheck="false">
+    autocapitalize="off"
+    spellcheck="false"
+  >
 
   <button class="primary full" id="confirm" type="button">
     Xác nhận mã
   </button>
 
-  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+  <div
+    class="notice"
+    id="notice"
+    role="status"
+    aria-live="polite"
+  ></div>
+
 </section>
 </main>
 
@@ -407,12 +439,11 @@ const $ = id => document.getElementById(id);
 $('year').textContent = new Date().getFullYear();
 
 function note(message, type = 'info') {
-  const box = $('notice');
-  box.textContent = message;
-  box.className = 'notice show ' + type;
+  const element = $('notice');
+  element.textContent = message;
+  element.className = 'notice show ' + type;
 }
 
-// Cấu hình Supabase của dự án.
 const SUPABASE_URL =
   'https://ndtcokxvaxprgwvqwpqu.supabase.co';
 
@@ -422,69 +453,53 @@ const SUPABASE_KEY =
 let supabaseClient = null;
 let checking = false;
 
-// Khởi tạo có kiểm tra để tránh lỗi nếu CDN chưa tải được.
-if (window.supabase && typeof window.supabase.createClient === 'function') {
+if (
+  window.supabase &&
+  typeof window.supabase.createClient === 'function'
+) {
   supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
   );
 }
 
-function explainSupabaseError(error) {
+function showSupabaseError(error) {
+  console.error('Supabase error:', error);
+
   const code = error?.code || 'UNKNOWN';
   const message = error?.message || 'Không có thông tin lỗi.';
-  const details = error?.details ? '\nChi tiết: ' + error.details : '';
-  const hint = error?.hint ? '\nGợi ý: ' + error.hint : '';
 
-  let advice = '';
+  let extra = '';
 
-  if (code === 'PGRST202' || code === '42883') {
-    advice =
-      '\n\nCó thể hàm redeem_gate_code chưa tồn tại, ' +
-      'tên tham số không khớp hoặc Supabase chưa cập nhật schema.';
+  if (code === '42P01') {
+    extra =
+      '\nNguyên nhân: bảng mà hàm SQL sử dụng không tồn tại. ' +
+      'Cần kiểm tra tên bảng thực tế trong Supabase.';
+  } else if (code === 'PGRST202' || code === '42883') {
+    extra =
+      '\nNguyên nhân có thể là hàm RPC không tồn tại, ' +
+      'sai tên tham số hoặc schema cache chưa được cập nhật.';
   } else if (code === '42501') {
-    advice =
-      '\n\nQuyền thực thi hàm hoặc quyền truy cập đang bị từ chối.';
-  } else if (code === '42P01') {
-    advice =
-      '\n\nKhông tìm thấy bảng được hàm SQL sử dụng.';
+    extra =
+      '\nNguyên nhân: quyền truy cập hoặc quyền thực thi hàm bị từ chối.';
   } else if (code === '42703') {
-    advice =
-      '\n\nTên cột được sử dụng trong hàm SQL có thể không tồn tại.';
-  } else if (code === 'PGRST301' || code === '401') {
-    advice =
-      '\n\nHãy kiểm tra URL và publishable key của dự án Supabase.';
+    extra =
+      '\nNguyên nhân: tên cột trong hàm SQL không tồn tại.';
   }
 
-  return 'Supabase (' + code + '): ' + message +
-    details + hint + advice;
-}
-
-function getResult(data) {
-  if (Array.isArray(data)) {
-    return data.length ? data[0] : null;
-  }
-
-  return data;
-}
-
-function getDestination(result) {
-  if (!result || typeof result !== 'object') {
-    return null;
-  }
-
-  return result.destination_url ||
-         result.target_url ||
-         result.url ||
-         null;
+  note(
+    'Supabase (' + code + '): ' + message + extra,
+    'error'
+  );
 }
 
 $('confirm').addEventListener('click', async () => {
-  const code = $('code').value.trim().toUpperCase();
+  // Giữ nguyên chữ hoa/chữ thường khi người dùng nhập mã.
+  const code = $('code').value.trim();
   const button = $('confirm');
 
   if (!code) {
-    note('Vui lòng dán mã bạn đã nhận.', 'error');
+    note('Vui lòng nhập mã nhận được.', 'error');
     $('code').focus();
     return;
   }
@@ -493,7 +508,7 @@ $('confirm').addEventListener('click', async () => {
 
   if (!supabaseClient) {
     note(
-      'Không tải được thư viện Supabase. Hãy kiểm tra kết nối mạng hoặc thử mở lại trang.',
+      'Không tải được Supabase. Hãy kiểm tra kết nối mạng và thử tải lại trang.',
       'error'
     );
     return;
@@ -510,23 +525,20 @@ $('confirm').addEventListener('click', async () => {
     );
 
     if (error) {
-      console.error('Lỗi RPC redeem_gate_code:', error);
-      note(explainSupabaseError(error), 'error');
+      showSupabaseError(error);
       return;
     }
 
-    const result = getResult(data);
+    const result = Array.isArray(data) ? data[0] : data;
 
     if (!result) {
-      console.error('Dữ liệu RPC trả về:', data);
       note(
-        'Hàm xác minh không trả về dữ liệu. Hãy kiểm tra kiểu trả về của hàm SQL redeem_gate_code.',
+        'Hàm xác minh không trả về dữ liệu. Hãy kiểm tra kiểu trả về của hàm SQL.',
         'error'
       );
       return;
     }
 
-    // Chấp nhận kết quả JSON hoặc kết quả dạng bảng có cột success.
     const success =
       result.success === true ||
       result.success === 'true';
@@ -540,12 +552,14 @@ $('confirm').addEventListener('click', async () => {
       return;
     }
 
-    const url = getDestination(result);
+    const destinationUrl =
+      result.destination_url ||
+      result.target_url ||
+      result.url;
 
-    if (!url) {
-      console.error('Kết quả thiếu URL:', result);
+    if (!destinationUrl) {
       note(
-        'Mã được báo hợp lệ nhưng dữ liệu không có destination_url. Hãy kiểm tra kết quả trả về của hàm SQL.',
+        'Hàm xác minh báo mã hợp lệ nhưng không trả về URL chuyển hướng.',
         'error'
       );
       return;
@@ -554,32 +568,30 @@ $('confirm').addEventListener('click', async () => {
     let destination;
 
     try {
-      destination = new URL(url);
+      destination = new URL(destinationUrl);
 
       if (
         destination.protocol !== 'https:' &&
         destination.protocol !== 'http:'
       ) {
-        throw new Error('Giao thức URL không được hỗ trợ.');
+        throw new Error('Giao thức không hợp lệ.');
       }
-    } catch (urlError) {
-      console.error('URL không hợp lệ:', urlError);
-      note('Địa chỉ chuyển hướng lưu trong Supabase không hợp lệ.', 'error');
+    } catch {
+      note('URL chuyển hướng không hợp lệ.', 'error');
       return;
     }
 
     note('Mã hợp lệ. Đang chuyển hướng...', 'success');
 
-    // Không tự động chuyển đến URL nếu dữ liệu URL không hợp lệ.
     window.setTimeout(() => {
       window.location.assign(destination.href);
     }, 700);
 
   } catch (error) {
-    console.error('Lỗi ngoài dự kiến:', error);
+    console.error('Unexpected error:', error);
 
     note(
-      'Không thể hoàn tất xác minh: ' +
+      'Không thể xác minh mã: ' +
       (error?.message || 'Lỗi không xác định.') +
       '\nHãy kiểm tra kết nối mạng và cấu hình Supabase.',
       'error'
@@ -598,5 +610,6 @@ $('code').addEventListener('keydown', event => {
   }
 });
 </script>
+
 </body>
-  </html>
+                           </html>
